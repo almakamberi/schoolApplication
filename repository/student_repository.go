@@ -21,7 +21,7 @@ func NewStudentRepository(db *sql.DB) StudentRepository {
 }
 
 func (r *PostgresStudentRepository) Create(student *models.Student) error {
-	sqlStatement := `INSERT INTO students (Name, Surname, Email) VALUES ($1, $2, $3) RETURNING ID`
+	sqlStatement := `INSERT INTO students (Name, Surname, Email) VALUES ($1, $2, $3)  RETURNING ID`
 	err := r.DB.QueryRow(sqlStatement, student.Name, student.Surname, student.Email).Scan(&student.ID)
 	return err
 }

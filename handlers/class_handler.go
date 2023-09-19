@@ -22,7 +22,7 @@ func (h *ClassHandler) CreateClass(w http.ResponseWriter, r *http.Request) {
 	var class models.Class
 	decoder := json.NewDecoder(r.Body)
 	if err := decoder.Decode(&class); err != nil {
-		respondWithError(w, http.StatusBadRequest, "Invalid request payload")
+		respondWithError(w, http.StatusBadRequest, "Invalid request payload ")
 		return
 	}
 	defer r.Body.Close()

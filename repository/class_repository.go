@@ -21,7 +21,7 @@ func NewClassRepository(db *sql.DB) ClassRepository {
 }
 
 func (r *PostgresClassRepository) Create(class *models.Class) error {
-	sqlStatement := `INSERT INTO class (name, date_of_creation) VALUES ($1, $2) RETURNING ID`
+	sqlStatement := `INSERT INTO class (name, date_of_creation) VALUES ($1, $2)  RETURNING ID`
 	err := r.DB.QueryRow(sqlStatement, class.Name, class.Date_Of_Creation).Scan(&class.ID)
 	return err
 }
